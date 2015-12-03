@@ -1,18 +1,21 @@
 package org.usfirst.ftc.exampleteam.yourcodehere;
 
-import com.qualcomm.robotcore.hardware.*;
-import org.swerverobotics.library.*;
-import org.swerverobotics.library.interfaces.*;
+import com.qualcomm.robotcore.hardware.DcMotor;
+
+import org.swerverobotics.library.SynchronousOpMode;
+import org.swerverobotics.library.interfaces.TeleOp;
 
 /**
- *  Main OpMode (teleOp)
+ *  Autonomous Mode
  */
-@TeleOp(name="TeleOp")
-public class MyFirstOpMode extends SynchronousOpMode
+@TeleOp(name="Autonomous")
+public class Autonomous extends SynchronousOpMode
     {
     /* Declare here any fields you might find useful. */
-    DcMotor motorLeft = null;
-    DcMotor motorRight = null;
+    DcMotor motorLeftBack = null;
+    DcMotor motorRightBack = null;
+    DcMotor motorLeftFront = null;
+    DcMotor motorRightFront = null;
 
     @Override public void main() throws InterruptedException
         {
@@ -20,10 +23,10 @@ public class MyFirstOpMode extends SynchronousOpMode
          * to 'get' must correspond to the names you assigned during the robot configuration
          * step you did in the FTC Robot Controller app on the phone.
          */
-        this.motorLeft = this.hardwareMap.dcMotor.get("motorLeft");
-        this.motorRight = this.hardwareMap.dcMotor.get("motorRight");
-
-
+        this.motorLeftBack = this.hardwareMap.dcMotor.get("motorLeft");
+        this.motorRightBack = this.hardwareMap.dcMotor.get("motorRight");
+        this.motorLeftFront = this.hardwareMap.dcMotor.get("motorLeftFront");
+        this.motorRightFront = this.hardwareMap.dcMotor.get("motorRightFront");
 
         // Wait for the game to start
         waitForStart();
@@ -34,8 +37,6 @@ public class MyFirstOpMode extends SynchronousOpMode
             if (updateGamepads())
                 {
                 // The game pad state has changed. Do something with that!
-                    float rightStickX = this.gamepad1.right_stick_x;
-                    motorLeft.setPower(rightStickX);
                 }
 
             telemetry.update();
