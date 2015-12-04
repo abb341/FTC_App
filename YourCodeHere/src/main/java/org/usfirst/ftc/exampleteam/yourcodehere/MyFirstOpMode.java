@@ -36,6 +36,9 @@ public class MyFirstOpMode extends SynchronousOpMode
                 // The game pad state has changed. Do something with that!
                     float rightStickX = this.gamepad1.right_stick_x;
                     motorLeft.setPower(rightStickX);
+                    float rightStickY = this.gamepad1.right_stick_y;
+                    motorLeft.setPower(rightStickY);
+                    motorRight.setPower(rightStickY);
                 }
 
             telemetry.update();
