@@ -7,7 +7,7 @@ import org.swerverobotics.library.interfaces.*;
 /**
  *  Main OpMode (teleOp)
  */
-@TeleOp(name="TeleOp")
+@TeleOp(name="MyFirstOpMode")
 public class MyFirstOpMode extends SynchronousOpMode
     {
     /* Declare here any fields you might find useful. */
@@ -23,26 +23,35 @@ public class MyFirstOpMode extends SynchronousOpMode
         this.motorLeft = this.hardwareMap.dcMotor.get("motorLeft");
         this.motorRight = this.hardwareMap.dcMotor.get("motorRight");
 
+            motorLeft.setChannelMode(DcMotorController.RunMode.RUN_WITHOUT_ENCODERS);
+            motorRight.setChannelMode(DcMotorController.RunMode.RUN_WITHOUT_ENCODERS);
+
+            while (true)
+            {
+             motorLeft.setPower(1.0);
+            }
+
 
 
         // Wait for the game to start
-        waitForStart();
+        //waitForStart();
 
-        // Go go gadget robot!
-        while (opModeIsActive())
-            {
-            if (updateGamepads())
-                {
-                // The game pad state has changed. Do something with that!
-                    float rightStickX = this.gamepad1.right_stick_x;
-                    motorLeft.setPower(rightStickX);
-                    float rightStickY = this.gamepad1.right_stick_y;
-                    motorLeft.setPower(rightStickY);
-                    motorRight.setPower(rightStickY);
-                }
-
-            telemetry.update();
-            idle();
-            }
+//        // Go go gadget robot!
+//        while (opModeIsActive())
+//            {
+//            if (updateGamepads())
+//                {
+//                // The game pad state has changed. Do something with that!
+//                    float rightStickX = this.gamepad1.right_stick_x;
+//                    motorLeft.setPower(rightStickX);
+//                    float rightStickY = this.gamepad1.right_stick_y;
+//                    motorLeft.setPower(rightStickY);
+//                    motorRight.setPower(rightStickY);
+//                }
+//
+//            telemetry.update();
+//            idle();
+//            }
+//
         }
     }
