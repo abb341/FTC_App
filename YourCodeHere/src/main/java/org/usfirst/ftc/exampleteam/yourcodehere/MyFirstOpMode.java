@@ -26,32 +26,30 @@ public class MyFirstOpMode extends SynchronousOpMode
             motorLeft.setChannelMode(DcMotorController.RunMode.RUN_WITHOUT_ENCODERS);
             motorRight.setChannelMode(DcMotorController.RunMode.RUN_WITHOUT_ENCODERS);
 
-            while (true)
-            {
-             motorLeft.setPower(1.0);
-            }
+//            while (true)
+//            {
+//               motorLeft.setPower(1.0);
+//                motorRight.setPower(0.0);
+//            }
 
 
 
         // Wait for the game to start
-        //waitForStart();
+        waitForStart();
 
-//        // Go go gadget robot!
-//        while (opModeIsActive())
-//            {
-//            if (updateGamepads())
-//                {
-//                // The game pad state has changed. Do something with that!
-//                    float rightStickX = this.gamepad1.right_stick_x;
-//                    motorLeft.setPower(rightStickX);
-//                    float rightStickY = this.gamepad1.right_stick_y;
-//                    motorLeft.setPower(rightStickY);
-//                    motorRight.setPower(rightStickY);
-//                }
-//
-//            telemetry.update();
-//            idle();
-//            }
+       // Go go gadget robot!
+        while (opModeIsActive())
+            {
+            if (updateGamepads())
+                {
+                // The game pad state has changed. Do something with that
+                    motorLeft.setPower(gamepad1.left_stick_y);
+                    motorRight.setPower(gamepad1.right_stick_y);
+                }
+
+                telemetry.update();
+                idle();
+            }
 //
         }
     }
