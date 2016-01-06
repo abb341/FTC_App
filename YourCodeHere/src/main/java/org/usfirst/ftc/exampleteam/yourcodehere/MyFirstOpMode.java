@@ -10,6 +10,8 @@ import org.swerverobotics.library.interfaces.*;
 @TeleOp(name="MyFirstOpMode")
 public class MyFirstOpMode extends SynchronousOpMode {
     /* Declare here any fields you might find useful. */
+
+    // Declare DC Motors
     DcMotor motorLeft = null;
     DcMotor motorRight = null;
 
@@ -19,11 +21,13 @@ public class MyFirstOpMode extends SynchronousOpMode {
          * to 'get' must correspond to the names you assigned during the robot configuration
          * step you did in the FTC Robot Controller app on the phone.
          */
+
+        // Initialize DC Motors
         this.motorLeft = this.hardwareMap.dcMotor.get("motorLeft");
         this.motorRight = this.hardwareMap.dcMotor.get("motorRight");
 
-        motorLeft.setChannelMode(DcMotorController.RunMode.RUN_WITHOUT_ENCODERS);
-        motorRight.setChannelMode(DcMotorController.RunMode.RUN_WITHOUT_ENCODERS);
+        motorLeft.setMode(DcMotorController.RunMode.RUN_WITHOUT_ENCODERS);
+        motorRight.setMode(DcMotorController.RunMode.RUN_WITHOUT_ENCODERS);
 
         motorRight.setDirection(DcMotor.Direction.REVERSE);
 
