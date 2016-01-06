@@ -25,9 +25,29 @@ public class MyFirstOpMode extends SynchronousOpMode {
         motorLeft.setChannelMode(DcMotorController.RunMode.RUN_WITHOUT_ENCODERS);
         motorRight.setChannelMode(DcMotorController.RunMode.RUN_WITHOUT_ENCODERS);
 
-        while (true) {
+        motorRight.setDirection(DcMotor.Direction.REVERSE);
+
+        boolean test = true;
+        while (test) {
             motorLeft.setPower(1.0);
             motorRight.setPower(1.0);
+
+            if (updateGamepads())
+            {
+                if (gamepad1.b)
+                {
+                    test = false;
+                }
+            }
+        }
+
+        while (opModeIsActive())
+        {
+            if (updateGamepads())
+            {
+                motorLeft.setPower(gamepad1.left_stick_y);
+                motorRight.setPower(gamepad1.right_stick_y);
+            }
         }
     }
 }
