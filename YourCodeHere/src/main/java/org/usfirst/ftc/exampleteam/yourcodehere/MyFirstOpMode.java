@@ -15,6 +15,10 @@ public class MyFirstOpMode extends SynchronousOpMode {
     DcMotor motorLeft = null;
     DcMotor motorRight = null;
 
+    // Declare Servos
+    DcMotor motorArm = null;
+
+
     @Override
     public void main() throws InterruptedException {
         /* Initialize our hardware variables. Note that the strings used here as parameters
@@ -46,12 +50,29 @@ public class MyFirstOpMode extends SynchronousOpMode {
 //        }
 
        // while (opModeIsActive())
+        // gamepad1.a
         while (true)
         {
             if (updateGamepads())
             {
                 motorLeft.setPower(gamepad1.left_stick_y);
                 motorRight.setPower(gamepad1.right_stick_y);
+
+                // move the arm with controller bumpers
+                if (gamepad1.right_bumper)
+                {
+                    motorArm.setPower(0.5);
+                    Thread.sleep(100);
+                }
+                else if (gamepad1.left_bumper)
+                {
+                    motorArm.setPower(-0.5);
+                    Thread.sleep(100);
+                }
+                else
+                {
+                    motorArm.setPower(0);
+                }
             }
 
             telemetry.update();
