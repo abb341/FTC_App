@@ -31,21 +31,22 @@ public class MyFirstOpMode extends SynchronousOpMode {
 
         motorRight.setDirection(DcMotor.Direction.REVERSE);
 
-        boolean test = true;
-        while (test) {
-            motorLeft.setPower(1.0);
-            motorRight.setPower(1.0);
+//        boolean test = true;
+//        while (test) {
+//            motorLeft.setPower(1.0);
+//            motorRight.setPower(1.0);
+//
+//            if (updateGamepads())
+//            {
+//                if (gamepad1.b)
+//                {
+//                    test = false;
+//                }
+//            }
+//        }
 
-            if (updateGamepads())
-            {
-                if (gamepad1.b)
-                {
-                    test = false;
-                }
-            }
-        }
-
-        while (opModeIsActive())
+       // while (opModeIsActive())
+        while (true)
         {
             if (updateGamepads())
             {
